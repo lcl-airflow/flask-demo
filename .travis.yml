@@ -1,0 +1,11 @@
+sudo: required
+services:
+        - docker
+
+before_install:
+        - echo 'Running build automation'
+        - sh './gradlew build --no-daemon'
+        - archiveArtifacts artifacts: 'dist/trainSchedule.zip'
+    
+script:
+        - docker build hm3cheun8383/cicd-k8 .
